@@ -107,3 +107,16 @@ document.getElementById('previous').addEventListener('click', ()=>{
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
 })
+const searchBar = document.getElementById('searchBar');
+searchBar.addEventListener('input', () => {
+    const searchText = searchBar.value.toLowerCase();
+    const songItems = Array.from(document.querySelectorAll('.songItem'));
+    songItems.forEach((songItem) => {
+        const songName = songItem.querySelector('.songName').innerText.toLowerCase();
+        if (songName.includes(searchText)) {
+            songItem.style.display = 'block';
+        } else {
+            songItem.style.display = 'none';
+        }
+    });
+});
